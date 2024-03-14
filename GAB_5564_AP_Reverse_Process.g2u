@@ -1,0 +1,17 @@
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.ODBC.Connection!CON.OPENCOMPANYCONNECTION(90)
+v.Local.sInput.Declare
+v.Local.iDOCID.Declare
+f.Intrinsic.UI.Inputbox("Enter Doc ID","Enter Doc ID","",v.Local.iDocID)
+v.Local.ssql.Declare
+		f.Intrinsic.String.Build("UPDATE GAB_5564_AP_SA SET POSTED=0 WHERE DOCID={0}",v.Local.iDOCID,v.Local.ssql)
+		f.ODBC.Connection!CON.Execute(v.Local.ssql)
+		
+		f.Intrinsic.String.Build("UPDATE GAB_5564_AP_HEAD SET PROCESSED=0, GSSStatus='approved'  WHERE DocID='{0}'",v.Local.iDOCID,v.Local.ssql)
+		f.ODBC.Connection!CON.Execute(v.Local.ssql) 
+F.ODBC.Connection!CON.Close
+
+Program.Sub.Main.End
