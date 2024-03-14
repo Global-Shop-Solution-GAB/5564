@@ -1,0 +1,2177 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(DashForm)
+Gui.Form..Caption("AP Invoices Not Uploaded 5564 v.2023.02.14")
+Gui.Form..Size(1024,720)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..BarHelpButton(True,"","AP Invoices Not Uploaded 5564","",1.0.1,"2/14/2023 12:00:00 AM","",0,0,False)
+Gui.Form..BarRefreshButton(False)
+Gui.Form..BarExportButton(True)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..AccentColor(3)
+Gui.Form..Event(ExportClick,Form_ExportClick)
+Gui.Form..Event(UserButtonClicked,Form_UserButtonClicked)
+Gui.Form.ac2.Create(AccordionControl)
+Gui.Form.ac2.Enabled(True)
+Gui.Form.ac2.Visible(False)
+Gui.Form.ac2.Size(130,654)
+Gui.Form.ac2.Position(130,0)
+Gui.Form.ac2.Dock(3)
+Gui.Form.ac2.Minimized(False)
+Gui.Form.ac2.Event(ElementClick,ac2_ElementClick)
+Gui.Form.ac1.Create(AccordionControl)
+Gui.Form.ac1.Enabled(True)
+Gui.Form.ac1.Visible(True)
+Gui.Form.ac1.Size(130,654)
+Gui.Form.ac1.Position(130,0)
+Gui.Form.ac1.Minimized(False)
+Gui.Form.ac1.Dock(3)
+Gui.Form.ac1.Event(ElementClick,ac1_ElementClick)
+Gui.Form.SplitContainer1.Create(SplitContainer)
+Gui.Form.SplitContainer1.Enabled(True)
+Gui.Form.SplitContainer1.Visible(True)
+Gui.Form.SplitContainer1.Zorder(0)
+Gui.Form.SplitContainer1.Size(764,654)
+Gui.Form.SplitContainer1.Position(260,0)
+Gui.Form.SplitContainer1.Orientation(1)
+Gui.Form.SplitContainer1.SplitterPosition(50)
+Gui.Form.SplitContainer1.Collapsed(False)
+Gui.Form.SplitContainer1.CollapsiblePanel(0)
+Gui.Form.SplitContainer1.Dock(5)
+Gui.Form.SplitContainer1.FixedPanel(0)
+Gui.Form.tab2.Create(Tab)
+Gui.Form.tab2.Enabled(True)
+Gui.Form.tab2.Visible(False)
+Gui.Form.tab2.Zorder(0)
+Gui.Form.tab2.Size(634,607)
+Gui.Form.tab2.Position(0,0)
+Gui.Form.tab2.Dock(5)
+Gui.Form.tab2.FontName("Tahoma")
+Gui.Form.tab2.FontSize(8.25)
+Gui.Form.tab2.Parent("SplitContainer1",1)
+Gui.Form.tab2.Tabs(1)
+Gui.Form.tab2.SetTab(0)
+Gui.Form.tab2.Caption("Retry Manifest")
+Gui.Form.gsManifest.Create(GsGridControl)
+Gui.Form.gsManifest.Enabled(True)
+Gui.Form.gsManifest.Visible(True)
+Gui.Form.gsManifest.Zorder(0)
+Gui.Form.gsManifest.Size(762,578)
+Gui.Form.gsManifest.Position(0,0)
+Gui.Form.gsManifest.Parent("tab2",0)
+Gui.Form.gsManifest.Dock(5)
+Gui.Form.gsManifest.Event(RowCellClick,gsManifest_RowCellClick)
+Gui.Form.tab1.Create(Tab)
+Gui.Form.tab1.Enabled(True)
+Gui.Form.tab1.Visible(True)
+Gui.Form.tab1.Zorder(0)
+Gui.Form.tab1.Size(764,592)
+Gui.Form.tab1.Position(0,0)
+Gui.Form.tab1.FontName("Tahoma")
+Gui.Form.tab1.FontSize(8.25)
+Gui.Form.tab1.Parent("SplitContainer1",1)
+Gui.Form.tab1.Dock(5)
+Gui.Form.tab1.Tabs(1)
+Gui.Form.tab1.SetTab(0)
+Gui.Form.tab1.Caption("Retry Notes")
+Gui.Form.gsRetry.Create(GsGridControl)
+Gui.Form.gsRetry.Enabled(True)
+Gui.Form.gsRetry.Visible(True)
+Gui.Form.gsRetry.Zorder(0)
+Gui.Form.gsRetry.Size(762,563)
+Gui.Form.gsRetry.Position(0,0)
+Gui.Form.gsRetry.Parent("tab1",0)
+Gui.Form.gsRetry.Dock(5)
+Gui.Form.gsRetry.Event(RowCellClick,gsRetry_RowCellClick)
+Gui.Form.gsRetry.Event(CellValueChanged,gsRetry_CellValueChanged)
+Gui.Form.frTop.Create(Frame)
+Gui.Form.frTop.Enabled(True)
+Gui.Form.frTop.Visible(True)
+Gui.Form.frTop.Zorder(0)
+Gui.Form.frTop.Size(764,50)
+Gui.Form.frTop.Position(0,0)
+Gui.Form.frTop.Caption("")
+Gui.Form.frTop.FontName("Tahoma")
+Gui.Form.frTop.FontSize(8.25)
+Gui.Form.frTop.Parent("SplitContainer1",0)
+Gui.Form.frTop.Dock(1)
+Gui.Form.lbl1.Create(Label,"Last Refresh:",True,65,13,0,12,4,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl1.BorderStyle(0)
+Gui.Form.lbl1.Parent("frTop")
+Gui.Form.lblPleaseWait.Create(Label,"Please wait...",False,66,13,0,501,3,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lblPleaseWait.BorderStyle(0)
+Gui.Form.lblPleaseWait.ForeColor(7504122)
+Gui.Form.lblPleaseWait.Parent("frTop")
+Gui.Form.lblPleaseWait.Dock(0)
+Gui.Form.lblPleaseWait.Anchor(1)
+Gui.Form.lblLastRefresh.Create(Label,"",True,1,13,0,100,4,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lblLastRefresh.BorderStyle(0)
+Gui.Form.lblLastRefresh.Parent("frTop")
+Gui.Form.proBar1.Create(ProgressBar)
+Gui.Form.proBar1.Visible(False)
+Gui.Form.proBar1.Size(65,9)
+Gui.Form.proBar1.Position(577,5)
+Gui.Form.proBar1.Parent("frTop")
+Gui.Form.proBar1.Anchor(1)
+Gui.Form.lbl2.Create(Label,"Post Date:",True,51,13,0,13,27,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl2.BorderStyle(0)
+Gui.Form.lbl2.Parent("frTop")
+Gui.Form.dtp1.Create(DatePicker)
+Gui.Form.dtp1.Enabled(True)
+Gui.Form.dtp1.Visible(True)
+Gui.Form.dtp1.Zorder(0)
+Gui.Form.dtp1.Size(100,20)
+Gui.Form.dtp1.Position(70,22)
+Gui.Form.dtp1.CheckBox(False)
+Gui.Form.dtp1.FontName("Tahoma")
+Gui.Form.dtp1.FontSize(8.25)
+Gui.Form.dtp1.DefaultValue(V.Ambient.Now)
+Gui.Form.dtp1.Parent("frTop")
+Gui.Form.ddlGssStatus.Create(DropDownList)
+Gui.Form.ddlGssStatus.Enabled(True)
+Gui.Form.ddlGssStatus.Visible(True)
+Gui.Form.ddlGssStatus.Zorder(0)
+Gui.Form.ddlGssStatus.Size(100,20)
+Gui.Form.ddlGssStatus.Position(298,22)
+Gui.Form.ddlGssStatus.FontName("Tahoma")
+Gui.Form.ddlGssStatus.FontSize(8.25)
+Gui.Form.ddlGssStatus.Parent("frTop")
+Gui.Form.ddlGssStatus.Event(Change,ddlGssStatus_Change)
+Gui.Form.lbl3.Create(Label,"GssStatus Data Filter:",True,105,13,0,188,28,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl3.BorderStyle(0)
+Gui.Form.lbl3.Parent("frTop")
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.External.Include.Library("AP043RIA.lib")
+Program.External.Include.Library("AP043UP1.lib")
+
+v.Global.bPassedFirstLoad.Declare
+v.Global.bLoading.Declare
+v.Global.bExporting.Declare
+V.Global.sDOCUMENTGROUP.Declare
+V.Global.iTNID.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'SS, October 2022
+'Customer: Writted for the benefit of SMC
+'Buisness Purpose: 5564 Invoices Not Uploaded Dashboard. This is a suplementary project that allows users to see/edit/Re-upload Invoice batches that failed with the main program.
+
+
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+f.Intrinsic.Control.Try	
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(true)
+	f.Intrinsic.Control.CallSub(CheckFolder)
+	f.ODBC.Connection!conx.OpenCompanyConnection(300)	
+	f.Intrinsic.Control.CallSub(CheckTable)
+	
+
+	
+	F.Intrinsic.Task.SetEnvironmentVariable("USEDARKTHEME",False)
+	gui.Form..applytheme()
+	
+	F.Intrinsic.Control.CallSub(BarAddButton)
+	F.Intrinsic.Control.CallSub(LoadInitialDictionaries)
+	F.Intrinsic.Control.CallSub(LoadAllAcordionControls)
+	
+
+	
+	f.Intrinsic.Control.CallSub(Create_ContextMenu)
+
+	F.Intrinsic.Control.CallSub(Form_UserButtonClicked,"Button","Refresh")
+	Gui.Form..ApplySavedSettings
+	gui.Form..Show
+	gui.Form.tab1.SetTab(0)
+	gui.Form..SetFocus
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+
+#Region "UnloadCatch"
+Program.Sub.Catching.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	F.Intrinsic.String.Build("Project: {5} {0}Subroutine: {1}{0}Error Occurred {2} with description {3}{0}GAB Version: {4}",V.Ambient.Newline,V.Args.SUB,V.Args.errorno,V.Args.errordesc,V.Ambient.GABVersion,v.Caller.ScriptFile,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	
+	f.Intrinsic.Control.CallSub(Unload)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry
+Program.Sub.Catching.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.Try
+
+	F.Intrinsic.Control.If(V.Global.bPassedFirstLoad)
+		'F.Intrinsic.Control.CallSub(Serialize)
+	F.Intrinsic.Control.EndIf
+
+	f.Intrinsic.Control.CallSub(Unload)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry	
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.Try	
+
+	f.Intrinsic.Control.If(v.ODBC.conx.Exists)
+		F.ODBC.Connection!conx.Close
+	f.Intrinsic.Control.EndIf
+	
+	Gui.Form..SaveSettings
+	F.Intrinsic.Control.End 
+	
+f.Intrinsic.Control.Catch
+	F.Intrinsic.Control.End 
+f.Intrinsic.Control.EndTry	
+Program.Sub.Unload.End
+
+
+#End Region 'UnloadCatch
+
+
+#Region "Initialize"
+
+Program.Sub.CheckFolder.Start
+f.Intrinsic.Control.Try
+	v.Local.sDir.Declare
+	v.Local.bExist.Declare
+	
+	f.Intrinsic.String.Build("{0}\Custom\5564\{1}",v.Caller.GlobalDir,v.Caller.CompanyCode,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.CheckFolder.End
+
+Program.Sub.CheckTable.Start
+f.Intrinsic.Control.Try
+	v.Local.bCheck.Declare
+	v.Local.sRet.Declare
+	v.Local.sVat.Declare
+	v.Local.i.Declare
+	v.Local.sMsg.Declare
+	
+	f.ODBC.Connection!conx.TableExists("GAB_5564_AP_HEAD",V.Local.bCheck)
+	F.Intrinsic.Control.If(v.Local.bCheck,=,False)
+		F.Intrinsic.UI.Msgbox("GAB_5564_AP_HEAD Table not found! Project 5564 must be not fully installed yet. Please run the other menu items for this project first!")
+		F.Intrinsic.Control.CallSub(unload)
+	F.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.CheckTable.End
+
+Program.Sub.BarAddButton.Start
+f.Intrinsic.Control.Try
+	gui.Form..BarAddButton("Refresh","Refresh")
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.BarAddButton.End
+
+Program.Sub.LoadInitialDictionaries.Start
+F.Intrinsic.Control.Try
+	
+	'Load static Dictionaries and DDLs
+	
+	Gui.Form.ddlGssStatus.AddItem("processed","0")
+	Gui.Form.ddlGssStatus.AddItem("approved","1")
+	Gui.Form.ddlGssStatus.AddItem("queue","2")
+	Gui.Form.ddlGssStatus.AddItem("saved","3")
+	Gui.Form.ddlGssStatus.AddItem("rejected","4")
+	
+	gui.Form.ddlGssStatus.Text("processed")
+	
+	'if we need to create any static dictionaries, they go here
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.LoadInitialDictionaries.End
+
+Program.Sub.LoadAllAcordionControls.Start
+f.Intrinsic.Control.Try
+	'Add Item to ac1 (IOP)
+	Gui.Form.ac1.Visible(False)
+	Gui.Form.ac1.AddElement(ServiceWeb,"Service Web","logo_g_green_32",16,16,,-1,0,"",True,True,False,1)
+	Gui.Form.ac1.AddElement(UPLOAD,"Retry Batch: Selected Invoices","icon_functions_black",16,16,,-1,0,"",True,True,False,1)
+	'Gui.Form.ac1.AddElement(Outbound,"Outbound","icon_functions_black",16,16,,-1,0,"",True,True,False,1)
+	'Gui.Form.ac1.AddElement(Possession,"Possession","icon_functions_black",16,16,,-1,0,"",True,True,False,1)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.LoadAllAcordionControls.End
+
+Program.Sub.Form_UserButtonClicked.Start
+f.Intrinsic.Control.Try	
+
+	'Disable form
+	F.Intrinsic.Control.BlockEvents
+	'Hide Other Acordion controls
+	Gui.Form.ac1.Visible(False)
+	Gui.Form.ac2.Visible(False)
+
+	gui.Form.tab1.Visible(False)
+	gui.Form.tab2.Visible(False)
+
+	
+	F.Intrinsic.Control.SelectCase(V.Args.Button)			
+
+		
+		F.Intrinsic.Control.Case("Refresh")
+			'Load DT -> GV			
+			F.Intrinsic.Control.CallSub(Load_Retry)
+			
+			'Show Accordion control and tab
+			Gui.Form.ac1.Visible(True)
+			gui.Form.tab1.Visible(True)
+
+			
+	F.Intrinsic.Control.EndSelect
+	
+	gui.Form.lblLastRefresh.Text(v.Ambient.Now)
+	
+	'Enable form
+	F.Intrinsic.Control.UnBlockEvents
+	
+'		
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form_UserButtonClicked.End
+
+Program.Sub.ac1_ElementClick.Start
+f.Intrinsic.Control.Try
+	v.Local.iRet.Declare
+	v.Local.bAuth.Declare
+	
+	
+	'This will prevent from multi-clicking too fast the button
+	f.Intrinsic.Control.If(v.Global.bLoading)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Global.bLoading.Set(True)	
+	
+	gui.Form.lblPleasewait.Visible(True)
+	gui.Form.lblpleasewait.Text("Please wait ...")		
+	
+	f.Intrinsic.Control.SelectCase(v.Args.ElementID.UCase)
+		f.Intrinsic.Control.Case("SERVICEWEB")
+			F.Intrinsic.Task.ShellExec(0,"Open","https://www.gss-service.com/","","",0)	
+	
+		f.Intrinsic.Control.Case("UPLOAD")
+			
+			F.Intrinsic.UI.Msgbox("Are you sure you want to upload the selected lines as an AP Invoice/Accrual Batch?","Warning",4,V.Local.iRet)
+			F.Intrinsic.Control.If(V.Local.iRet,<>,6)
+				F.Intrinsic.Control.ExitSub
+			F.Intrinsic.Control.EndIf
+			
+			'F.Intrinsic.UI.Msgbox("Feature not ready yet")
+						
+			F.Intrinsic.Control.BlockEvents
+			
+			'Dataview the selected rows.
+			'Send that new DT to the library to do the invoice batch creation, posting, and updating of the custom datatables. Need to verify the DT format that the Library accepts. Need to Verify that the Custom tables get updated.
+			F.Intrinsic.Control.CallSub(APBatchUpload)
+			
+			F.Intrinsic.Control.UnBlockEvents
+			
+			F.Intrinsic.Control.CallSub(Form_UserButtonClicked,"Button","Refresh")
+			
+		
+	f.Intrinsic.Control.EndSelect
+	
+	v.Global.bPassedFirstLoad.Set(True)
+	gui.Form.lblPleasewait.Visible(False)	
+	
+	v.Global.bLoading.Set(False)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.ac1_ElementClick.End
+
+
+
+'Currently dont want to use context menus (Leaving it here for possible future features)
+Program.Sub.Create_ContextMenu.Start
+f.Intrinsic.Control.Try
+	
+	'Retry grid
+	Gui.Form..ContextMenuCreate("ctxRetry")
+	gui.Form.gsRetry.ContextMenuAttach("ctxRetry")
+	Gui.Form..ContextMenuAddItem("ctxRetry","SelectAll",0,"Select All")
+	Gui.Form..ContextMenuSetItemEventHandler("ctxRetry","SelectAll","SelectAll")
+	
+	Gui.Form..ContextMenuAddItem("ctxRetry","DeselectAll",0,"Deselect All")
+	Gui.Form..ContextMenuSetItemEventHandler("ctxRetry","DeselectAll","DeselectAll")
+	
+	
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Create_ContextMenu.End
+
+
+
+#End Region 'Initialize
+
+
+Program.Sub.SelectAll.Start
+f.Intrinsic.Control.Try
+
+	F.Intrinsic.Control.SelectCase(V.Screen.Form!tab1.Tab)
+	F.Intrinsic.Control.Case(0)
+		'Main Tab
+		f.Intrinsic.Control.If(v.DataTable.dtRetry.Exists)
+			F.Data.DataTable.SetValue("dtRetry",-1,"Sel",true)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.EndSelect
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.SelectAll.End
+
+
+Program.Sub.DeselectAll.Start
+f.Intrinsic.Control.Try
+
+	F.Intrinsic.Control.SelectCase(V.Screen.Form!tab1.Tab)
+	F.Intrinsic.Control.Case(0)
+		'Main Tab
+		f.Intrinsic.Control.If(v.DataTable.dtRetry.Exists)
+			F.Data.Datatable.SetValue("dtRetry",-1,"Sel",False)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+		
+	F.Intrinsic.Control.EndSelect
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.DeselectAll.End
+
+'Why isnt this flushed out? need to flush it out
+Program.Sub.Form_ExportClick.Start
+F.Intrinsic.Control.Try	
+	V.Local.sFileExport.Declare
+	V.Local.bExcel.Declare
+	V.Local.sMsg.Declare
+	V.Local.sControl.Declare
+	V.Local.sForm.Declare(String, "Form")
+	V.Local.sDate.Declare
+	V.Local.sTime.Declare
+	V.Local.bFileLocked.Declare
+	V.Local.sExportString.Declare
+	
+	F.Intrinsic.Control.If(V.Screen.Form!tab1.Tab,=,0)
+		V.Local.sControl.Set("gsRetry")
+	F.Intrinsic.Control.Else
+		V.Local.sControl.Set("gsRetry")
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Global.bPassedFirstLoad.Not)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Global.bExporting)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Global.bExporting.Set(True)
+
+
+	'Arc Number - 5564
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+	F.Intrinsic.String.DateString(V.Ambient.Date,V.Local.sDate)
+	F.Intrinsic.String.TimeString(V.Ambient.Time,V.Local.sTime)
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		F.Intrinsic.String.Build("{0}\GCG_5564_{1}_Export_{2}_{3}.xlsx",V.Caller.LocalGSSTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File : {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			'Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"xlsx")
+			Gui.[V.Local.sForm].[V.Local.sControl].ExportDetails("xlsx", V.Local.sFileExport,1)
+
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\GCG_5564_{1}_Export_{2}_{3}.csv",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sDate,V.Local.sTime,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+	F.Intrinsic.Control.EndIf
+	
+	v.Global.bExporting.Set(False)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Form_ExportClick.End
+
+Program.Sub.test.Start
+'Sel
+'DOCID
+'DOCURL
+'IMGURL
+'VENDCODE
+'VENDNAME
+'INVCNUMB
+'INVCDATE
+'POHEAD
+'SUBTOTAL
+'FREIGHT
+'GSTTOTAL
+'GRSTOTAL
+'DOWNSTAT
+'NOTES
+'GssStatus
+'RejectReason
+'DocSavedLocation
+'XRefCheck
+'CreditNote
+'PROCESSED
+'ID
+'INVOICETYPE
+'PROCESSEDDATE
+'HID
+'APAPPROVEID
+'APINVACCRFLAG
+'APPROVED
+'BOOKSELFTAX
+'BRANCH
+'BUYER
+'COSTTYPE
+'RECEIVED_AMT
+'ACTUAL_AMT
+'GLACCOUNT
+'INVOICENOTES
+'JOB
+'SEQ
+'SUFFIX
+'LOCATION
+'PART
+'POLINE
+'PORCVR
+'POSTED
+'POUM
+'QUANTITY
+'TAXABLEFLAG
+'TAXCODE
+'VAT
+'VOUCHER
+
+
+
+Program.Sub.test.End
+
+#Region "Tab Retry"
+Program.Sub.Load_Retry.Start
+f.Intrinsic.Control.Try
+	V.Local.sBegDate.Declare
+	V.Local.sEndDate.Declare
+	V.Local.dBegDate.Declare
+	V.Local.dEndDate.Declare
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	V.local.iCnt.Declare
+	v.Local.sSerialize.Declare
+	v.Local.sProgrammedBy.Declare
+	V.Local.bExists.Declare
+	V.Local.sGssStatus.Declare
+	
+	f.Intrinsic.Control.If(v.DataTable.dtRetry.Exists)
+		f.Data.DataTable.Close("dtRetry")
+		gui.Form.gsRetry.ClearRows("gvRetry")		
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtRetry0.Exists)
+		F.Data.Dataview.Close("dtRetry0","dv")
+		f.Data.DataTable.Close("dtRetry0")
+	f.Intrinsic.Control.EndIf
+
+	F.Data.Dictionary.Exists("DictSelDOCID",V.Local.bExists)
+	f.Intrinsic.Control.If(V.Local.bExists)
+		F.Data.Dictionary.Close("DictSelDOCID")
+	f.Intrinsic.Control.EndIf
+
+	'GAB_5564_AP_HEAD
+	F.Intrinsic.String.Build("select Cast(0 as bit) Sel, DOCID, RTRIM(DOCURL) DOCURL, RTRIM(IMGURL) IMGURL, RTRIM(VENDCODE) VENDCODE, RTRIM(VENDNAME) VENDNAME, RTRIM(INVCNUMB) INVCNUMB, RTRIM(VENDCODE) + '-' + RTRIM(INVCNUMB) as APKey, INVCDATE, RTRIM(POHEAD) POHEAD, SUBTOTAL, FREIGHT, GSTTOTAL, GRSTOTAL, DOWNSTAT, RTRIM(NOTES) NOTES, RTRIM(GssStatus) GssStatus, RTRIM(RejectReason) RejectReason, RTRIM(DocSavedLocation) DocSavedLocation, XRefCheck, CreditNote, PROCESSED, ID, INVOICETYPE, PROCESSEDDATE from GAB_5564_AP_HEAD where APKey Not in (Select RTRIM(VENDOR) + '-' + RTRIM(INVOICE) From AP_OPEN_ITEMS) and gssstatus='{0}'",v.Screen.Form!ddlGssStatus.Value,V.Local.sSQL)
+	f.Data.Datatable.CreateFromSQL("dtRetry0","conx",V.Local.sSQL,True)
+	
+	'Dictionary for DOCID, Select
+	F.Data.Dictionary.CreateFromDataTable("DictSelDOCID","dtRetry0","DOCID","Sel")
+	F.Data.Dictionary.SetDefaultReturn("DictSelDOCID",False)
+	
+	'GAB_5564_AP_SA
+	f.Data.Datatable.CreateFromSQL("dtRetryLines","conx","select DOCID, HID, APAPPROVEID, APINVACCRFLAG, APPROVED, RTRIM(BOOKSELFTAX) BOOKSELFTAX, RTRIM(BRANCH) BRANCH, RTRIM(BUYER) BUYER, COSTTYPE, RECEIVED_AMT, ACTUAL_AMT, RTRIM(GLACCOUNT) GLACCOUNT, RTRIM(INVOICENOTES) INVOICENOTES, RTRIM(JOB) JOB, RTRIM(SEQ) SEQ, RTRIM(SUFFIX) SUFFIX, RTRIM(LOCATION) LOCATION, RTRIM(PART) PART, RTRIM(POLINE) POLINE, RTRIM(PORCVR) PORCVR, POSTED, RTRIM(POUM) POUM, QUANTITY,  TAXABLEFLAG, RTRIM(TAXCODE) TAXCODE, VAT, RTRIM(VOUCHER) VOUCHER, EXCH_CURR, EXCH_RATE, EXCH_AMT, PACKINGLIST  FROM GAB_5564_AP_SA",True)
+	
+	'Inner Join
+	F.Data.Linq.Join(V.Enum.LinqJoinType!InnerJoin,V.Enum.LinqSourceType!DataTable,"dtRetry0*!*A",V.Enum.LinqSourceType!DataTable,"dtRetryLines*!*B","A.DOCID = B.DOCID","A.Sel*!*A.DOCID*!*A.DOCURL*!*A.IMGURL*!*A.VENDCODE*!*A.VENDNAME*!*A.INVCNUMB*!*A.INVCDATE*!*A.POHEAD*!*A.SUBTOTAL*!*A.FREIGHT*!*A.GSTTOTAL*!*A.GRSTOTAL*!*A.DOWNSTAT*!*A.NOTES*!*A.GssStatus*!*A.RejectReason*!*A.DocSavedLocation*!*A.XRefCheck*!*A.CreditNote*!*A.PROCESSED*!*A.ID*!*A.INVOICETYPE*!*A.PROCESSEDDATE*!*B.HID*!*B.APAPPROVEID*!*B.APINVACCRFLAG*!*B.APPROVED*!*B.BOOKSELFTAX*!*B.BRANCH*!*B.BUYER*!*B.COSTTYPE*!*B.RECEIVED_AMT*!*B.ACTUAL_AMT*!*B.GLACCOUNT*!*B.INVOICENOTES*!*B.JOB*!*B.SEQ*!*B.SUFFIX*!*B.LOCATION*!*B.PART*!*B.POLINE*!*B.PORCVR*!*B.POSTED*!*B.POUM*!*B.QUANTITY*!*B.TAXABLEFLAG*!*B.TAXCODE*!*B.VAT*!*B.VOUCHER*!*B.EXCH_CURR*!*B.EXCH_RATE*!*B.EXCH_AMT*!*B.PACKINGLIST","","","A.DOCID DESC","dtRetry",True)
+	F.Data.DataTable.Close("dtRetry0")
+	F.Data.DataTable.Close("dtRetryLines")
+	
+	'Adding Vendor Button to allow for users to use the a Vendor lookup in the grid
+	F.Data.DataTable.AddColumn("dtRetry","VENDOR_BUTTON","Boolean")
+	
+	gui.Form.gsRetry.AddGridviewFromDatatable("gvRetry","dtRetry")
+	
+	f.Intrinsic.Control.CallSub(Format_Retry)
+	
+	gui.Form.gsRetry.MainView("gvRetry")	
+	gui.Form.tab1.SetTab(0)
+
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Load_Retry.End
+
+Program.Sub.Format_Retry.Start
+	V.Local.sProp.Declare
+	v.Local.sValue.Declare	
+	V.Local.iRet.Declare
+	V.Local.iCnt.Declare
+	v.Local.sValue2.Declare
+	v.Local.sValue3.Declare
+	V.Local.sList.Declare
+	
+	gui.Form.gsRetry.SuspendLayout()
+	
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","MultiSelect",True)
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","AllowSort",True)
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","AllowFilter",True)
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","OptionsDetailShowDetailTabs",False)
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","OptionsViewShowGroupPanel",True)
+	gui.Form.gsRetry.SetGridViewProperty("gvRetry","EnableAppearanceOddRow",True)
+	gui.Form.gsRetry.SetGridviewProperty("gvRetry",v.Enum.GridViewPropertyNames!ShowAutoFilterRow,True)
+	gui.Form.gsRetry.SetGridviewProperty("gvRetry","OptionsViewColumnAutoWidth",False)
+	gui.Form.gsRetry.SetGridviewProperty("gvRetry","AllowColumnResizing",True)	
+	gui.Form.gsRetry.SetGridviewProperty("gvRetry","ColumnPanelRowHeight","50")
+	gui.Form.gsRetry.SetGridviewProperty("gvRetry",v.Enum.GridViewPropertyNames!SuppressNothingDates,True)	
+	
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","Visible","sValue","True")
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","HeaderFontBold","sValue","True")
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","HeaderWordWrap","sValue","wrap")
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","HeaderVAlignment","sValue","Top")	
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","AllowEdit","sValue","True")	
+	f.Intrinsic.Control.CallSub(Bulk_Format_Retry,"sProp","ReadOnly","sValue","False")	
+
+'SELECT
+'ID
+'LID
+'Line
+'ItemQty
+'UnitQty
+'Unit
+'Description
+'PriorityFlag
+'WOStatusID
+'InboundItemQuantity
+'OutboundItemQuantity
+'PossItemQuantity
+'Inbound_Needed
+'Outbound_Needed
+'Possesson_Needed
+
+	v.Local.sProp.Set("VisibleIndex")
+	v.Local.iCnt.Set(-1)	
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","Sel",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GssStatus",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GLACCOUNT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","JOB",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SEQ",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUFFIX",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDOR_BUTTON",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCNUMB",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCDATE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUBTOTAL",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","FREIGHT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GSTTOTAL",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GRSTOTAL",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOWNSTAT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POHEAD",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POLINE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PORCVR",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POUM",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","QUANTITY",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RejectReason",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","XRefCheck",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","CreditNote",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICETYPE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APINVACCRFLAG",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APPROVED",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BOOKSELFTAX",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BRANCH",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BUYER",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","COSTTYPE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RECEIVED_AMT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ACTUAL_AMT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICENOTES",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","LOCATION",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PART",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCURL",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","IMGURL",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DocSavedLocation",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXABLEFLAG",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXCODE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VAT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VOUCHER",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","NOTES",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_CURR",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_RATE",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_AMT",v.Local.sProp,v.Local.iCnt.++)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PACKINGLIST",v.Local.sProp,v.Local.iCnt.++)
+
+	v.Local.sProp.Set("HeaderHAlignment")
+	v.Local.sValue.Set("Near")
+	v.Local.sValue2.Set("Center")
+	v.Local.sValue3.Set("Far")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","Sel",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCURL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","IMGURL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCNUMB",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POHEAD",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUBTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","FREIGHT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GSTTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GRSTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOWNSTAT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","NOTES",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GssStatus",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RejectReason",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DocSavedLocation",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","XRefCheck",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","CreditNote",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICETYPE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APINVACCRFLAG",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APPROVED",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BOOKSELFTAX",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BRANCH",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BUYER",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","COSTTYPE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RECEIVED_AMT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ACTUAL_AMT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GLACCOUNT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICENOTES",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","JOB",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SEQ",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUFFIX",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","LOCATION",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PART",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POLINE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PORCVR",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POUM",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","QUANTITY",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXABLEFLAG",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXCODE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VAT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VOUCHER",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PACKINGLIST",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_CURR",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_RATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_AMT",v.Local.sProp,v.Local.sValue)
+	
+	v.Local.sProp.Set("CellHAlignment")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","Sel",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCURL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","IMGURL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCNUMB",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POHEAD",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUBTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","FREIGHT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GSTTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GRSTOTAL",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOWNSTAT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","NOTES",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GssStatus",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RejectReason",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DocSavedLocation",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","XRefCheck",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","CreditNote",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICETYPE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APINVACCRFLAG",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APPROVED",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BOOKSELFTAX",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BRANCH",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","BUYER",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","COSTTYPE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","RECEIVED_AMT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ACTUAL_AMT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","GLACCOUNT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICENOTES",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","JOB",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SEQ",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","SUFFIX",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","LOCATION",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PART",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POLINE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PORCVR",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POUM",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","QUANTITY",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXABLEFLAG",v.Local.sProp,v.Local.sValue2)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXCODE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VAT",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VOUCHER",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PACKINGLIST",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_CURR",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_RATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","EXCH_AMT",v.Local.sProp,v.Local.sValue)
+	
+	v.Local.sProp.Set("Caption")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","Sel",v.Local.sProp,"Select")
+
+			
+
+'	v.Local.sProp.Set("Width")
+'	gui.Form.gsRetry.SetColumnProperty("gvRetry","SELECT",v.Local.sProp,"70")
+	
+	
+	
+'	For RowCellClick and CellValueChanged
+	v.Local.sProp.Set("AllowEdit")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDOR_BUTTON",v.Local.sProp,False)
+
+
+	v.Local.sProp.Set("ReadOnly")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Local.sProp,True)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Local.sProp,False)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDOR_BUTTON",v.Local.sProp,False)
+	
+	
+	'BackForeColor
+	v.Local.sProp.Set("CellBackColor")
+	v.Local.sValue.Set("LightYellow")
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDOR_BUTTON",v.Local.sProp,v.Local.sValue)
+	
+	v.Local.sProp.Set("DisplayCustomDatetime")
+	v.Local.sValue.Set("d")	
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Local.sProp,v.Local.sValue)
+	gui.Form.gsRetry.SetColumnProperty("gvRetry","PACKINGLIST",v.Local.sProp,v.Local.sValue)
+	
+	gui.Form.gsRetry.AddStyleFormatCondition("gvRetry","GLACCOUNT","GLACCOUNT","Expression","[GLACCOUNT] = ''")
+	gui.Form.gsRetry.SetStyleFormatConditionProperty("gvRetry","GLACCOUNT","GLACCOUNT","backcolor","Red")
+	
+	gui.Form.gsRetry.AddStyleFormatCondition("gvRetry","VENDCODE","VENDCODE","Expression","[VENDCODE] = ''")
+	gui.Form.gsRetry.SetStyleFormatConditionProperty("gvRetry","VENDCODE","VENDCODE","backcolor","Red")
+	
+	'Making GssStatus a DDL
+	'F.Intrinsic.String.Build("processed*!*approved*!*queue*!*saved*!*rejected",V.Local.sList,V.Local.sList)
+	F.Intrinsic.String.Build("processed*!*rejected",V.Local.sList,V.Local.sList)
+	Gui.Form.gsRetry.ColumnEdit("gvRetry","GSSSTATUS","Dropdownlist",V.Local.sList)
+	
+	Gui.Form.gsRetry.ColumnEdit("gvRetry","VENDOR_BUTTON","EditorButton","Vendor")
+	
+	
+	gui.Form.gsRetry.ResumeLayout()
+
+Program.Sub.Format_Retry.End
+
+Program.Sub.Bulk_Format_Retry.Start
+gui.Form.gsRetry.SetColumnProperty("gvRetry","Sel",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCID",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","DOCURL",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","IMGURL",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDCODE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDNAME",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCNUMB",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","INVCDATE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","POHEAD",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","SUBTOTAL",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","FREIGHT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","GSTTOTAL",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","GRSTOTAL",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","DOWNSTAT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","NOTES",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","GssStatus",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","RejectReason",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","DocSavedLocation",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","XRefCheck",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","CreditNote",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSED",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","ID",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICETYPE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","PROCESSEDDATE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","HID",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","APAPPROVEID",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","APINVACCRFLAG",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","APPROVED",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","BOOKSELFTAX",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","BRANCH",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","BUYER",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","COSTTYPE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","RECEIVED_AMT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","ACTUAL_AMT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","GLACCOUNT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","INVOICENOTES",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","JOB",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","SEQ",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","SUFFIX",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","LOCATION",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","PART",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","POLINE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","PORCVR",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","POSTED",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","POUM",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","QUANTITY",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXABLEFLAG",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","TAXCODE",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","VAT",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","VOUCHER",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","VENDOR_BUTTON",v.Args.sProp,v.Args.sValue)
+gui.Form.gsRetry.SetColumnProperty("gvRetry","PACKINGLIST",v.Args.sProp,v.Args.sValue)
+
+Program.Sub.Bulk_Format_Retry.End
+
+Program.Sub.gsRetry_RowCellClick.Start
+V.Local.iRet.Declare
+V.Local.sMessage.Declare
+V.Local.sSQL.Declare
+V.Local.sCol.Declare(String)
+V.Local.sColW.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sVendCode.Declare
+V.Local.sVendName.Declare
+V.Local.sDOCID.Declare
+V.Local.sAPApproveID.Declare
+
+F.Intrinsic.Control.Try
+F.Intrinsic.Control.BlockEvents
+
+Gui.Form.gsRetry.GetCellValueByColumnName("gvRetry","DOCID",V.Args.RowIndex,V.Local.sDOCID)
+Gui.Form.gsRetry.GetCellValueByColumnName("gvRetry","APAPPROVEID",V.Args.RowIndex,V.Local.sAPApproveID)
+
+F.Intrinsic.Control.SelectCase(V.Args.Column.UCase)
+	F.Intrinsic.Control.Case("VENDOR_BUTTON")
+	V.Local.sSQL.Set("SELECT RTRIM(VENDOR) as VENDOR, RTRIM(NAME_VENDOR) as NAME_VENDOR, RTRIM(ADDRESS1) as ADDRESS FROM V_VENDOR_MASTER")
+	'Split Column Names into an array (*!* delimited string)
+	F.Intrinsic.String.Split("Vemndor Code*!*Name Vendor*!*Address","*!*",V.Local.sCol)
+	'Split Column widths into an array (*!* delimited string)
+	F.Intrinsic.String.Split("600*!*3000*!*2000","*!*",V.Local.sColW)
+	F.Intrinsic.UI.Browser("Vendor Browser","Conx",V.Local.sSQL,V.Local.sCol,V.Local.sColW,V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		V.Local.sVendCode.Set(V.Local.sRet(0))
+		V.Local.sVendName.Set(V.Local.sRet(1))
+		F.Intrinsic.String.UCase(V.Local.sVendName,V.Local.sVendName)
+		
+		'Update DB table Table
+		F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set VENDCODE = '{0}', VENDNAME = '{1}' Where DOCID = '{2}';",V.Local.sVendCode.PSQLFriendly,V.Local.sVendName.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+		F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		'update DT for VENDCODE
+		F.Data.Dictionary.Create("dictVendCode")
+		F.Data.Dictionary.AddItem("dictVendCode",V.Local.sDOCID,V.Local.sVendCode)
+		F.Data.DataTable.FillFromDictionary("dtRetry","dictVendCode","DOCID","VENDCODE")
+		F.Data.Dictionary.Close("dictVendCode")
+	
+		'update DT  for VENDNAME
+		F.Data.Dictionary.Create("dictVendName")
+		F.Data.Dictionary.AddItem("dictVendName",V.Local.sDOCID,V.Local.sVendName)
+		F.Data.DataTable.FillFromDictionary("dtRetry","dictVendName","DOCID","VENDNAME")
+		F.Data.Dictionary.Close("dictVendName")
+		
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.EndSelect
+F.Intrinsic.Control.UnBlockEvents
+F.Intrinsic.Control.Catch
+	
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} at {6} with description {4}{1}{1}GAB Version: {5}", V.Caller.ScriptFile, V.Ambient.Newline, V.Ambient.CurrentSubroutine, V.Ambient.ErrorNumber, V.Ambient.ErrorDescription, V.Ambient.GABVersion, V.Ambient.Now, V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End()
+
+F.Intrinsic.Control.EndTry
+Program.Sub.gsRetry_RowCellClick.End
+
+Program.Sub.gsRetry_CellValueChanged.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	V.Local.sSQL.Declare
+	V.Local.sDOCID.Declare
+	V.Local.sAPApproveID.Declare
+	V.Local.sGssStatus.Declare
+	v.Local.sJob.Declare
+	v.Local.sSuf.Declare
+	V.Local.sParams.Declare
+	v.Local.sDate.Declare
+	V.Local.bSel.Declare
+	V.Local.dDate.Declare
+	V.Local.sValue.Declare
+	V.Local.bFlag.Declare
+	V.Local.sFlag.Declare
+	V.Local.fFloat.Declare
+	V.Local.ival.Declare
+	
+	Gui.Form.gsRetry.GetCellValueByColumnName("gvRetry","DOCID",V.Args.RowIndex,V.Local.sDOCID)
+	Gui.Form.gsRetry.GetCellValueByColumnName("gvRetry","APAPPROVEID",V.Args.RowIndex,V.Local.sAPApproveID)
+	
+	'f.Intrinsic.Debug.ShowCallerInfo
+	F.Intrinsic.Control.SelectCase(V.Args.column.UCase)
+		
+		F.Intrinsic.Control.Case("SEL")
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.bSel.Set(True)
+			F.Intrinsic.Control.Else
+				V.Local.bSel.Set(False)
+			F.Intrinsic.Control.EndIf
+			F.Data.Dictionary.UpdateItem("DictSelDOCID",V.Local.sDOCID,V.Local.bSel)
+			F.Data.DataTable.FillFromDictionary("dtRetry","DictSelDOCID","DOCID","Sel")
+		
+		F.Intrinsic.Control.Case("GLACCOUNT")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set GLACCOUNT = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("GSSSTATUS")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set GSSSTATUS = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictGssStatus")
+			F.Data.Dictionary.AddItem("dictGssStatus",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictGssStatus","DOCID","GSSSTATUS")
+			F.Data.Dictionary.Close("dictGssStatus")
+		
+		F.Intrinsic.Control.Case("DOCURL")
+		'GAB_5564_AP_HEAD
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set DOCURL = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","DOCURL")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("IMGURL")
+		'GAB_5564_AP_HEAD
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set IMGURL = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","IMGURL")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("INVCNUMB")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set INVCNUMB = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","INVCNUMB")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("INVCDATE")
+		'GAB_5564_AP_HEAD
+			
+			''DATE
+			V.Local.dDate.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set INVCDATE = '{0}' Where DOCID = '{1}';",V.Local.dDate.PervasiveDate,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.dDate)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","INVCDATE")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("POHEAD")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set POHEAD = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","POHEAD")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("SUBTOTAL")
+		'GAB_5564_AP_HEAD
+			
+			''FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set SUBTOTAL = '{0}' Where DOCID = '{1}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.fFloat)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","SUBTOTAL")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("FREIGHT")
+		'GAB_5564_AP_HEAD
+			''FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set FREIGHT = '{0}' Where DOCID = '{1}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","FREIGHT")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("GSTTOTAL")
+		'GAB_5564_AP_HEAD
+		
+			''FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set GSTTOTAL = '{0}' Where DOCID = '{1}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","GSTTOTAL")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("GRSTOTAL")
+		'GAB_5564_AP_HEAD
+			
+			''FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set GRSTOTAL = '{0}' Where DOCID = '{1}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","GRSTOTAL")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("DOWNSTAT")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set DOWNSTAT = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","DOWNSTAT")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("NOTES")
+		'GAB_5564_AP_HEAD
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set NOTES = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","NOTES")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("REJECTREASON")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set REJECTREASON = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","REJECTREASON")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("DOCSAVEDLOCATION")
+		'GAB_5564_AP_HEAD
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set DOCSAVEDLOCATION = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","DOCSAVEDLOCATION")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("XREFCHECK")
+		'GAB_5564_AP_HEAD
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			V.Local.bFlag.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set XREFCHECK = '{0}' Where DOCID = '{1}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.bFlag)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","XREFCHECK")
+			F.Data.Dictionary.Close("dictAPHead")
+			
+		F.Intrinsic.Control.Case("CREDITNOTE")
+		'GAB_5564_AP_HEAD
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			V.Local.bFlag.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set CREDITNOTE = '{0}' Where DOCID = '{1}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.bFlag)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","CREDITNOTE")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("PROCESSED")
+		'GAB_5564_AP_HEAD
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			V.Local.bFlag.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set PROCESSED = '{0}' Where DOCID = '{1}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.bFlag)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","PROCESSED")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("INVOICETYPE")
+		'GAB_5564_AP_HEAD
+		
+			'Maybe make this into a DDL? it should just be either an 'i' or 'a' possibly sometimes '' but need to ask
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set INVOICETYPE = '{0}' Where DOCID = '{1}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.sValue)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","INVOICETYPE")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("PROCESSEDDATE")
+		'GAB_5564_AP_HEAD
+			
+			'DATE
+			V.Local.dDate.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_HEAD Set PROCESSEDDATE = '{0}' Where DOCID = '{1}';",V.Local.dDate.PervasiveDate,V.Local.sDOCID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+			F.Data.Dictionary.Create("dictAPHead")
+			F.Data.Dictionary.AddItem("dictAPHead",V.Local.sDOCID,V.Local.dDate)
+			F.Data.DataTable.FillFromDictionary("dtRetry","dictAPHead","DOCID","PROCESSEDDATE")
+			F.Data.Dictionary.Close("dictAPHead")
+		
+		F.Intrinsic.Control.Case("APINVACCRFLAG")
+		'GAB_5564_AP_SA
+			
+			'String but should have been a Boolean... its a Varchar(1)
+			'Should look up expected values
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set APINVACCRFLAG = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("APPROVED")
+		'GAB_5564_AP_SA
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set APPROVED = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("BOOKSELFTAX")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set BOOKSELFTAX = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("BRANCH")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set BRANCH = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("BUYER")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set BUYER = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("COSTTYPE")
+		'GAB_5564_AP_SA
+			
+			'INTEGER
+			V.Local.iVal.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set COSTTYPE = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.iVal,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("RECEIVED_AMT")
+		'GAB_5564_AP_SA
+			
+			'FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set RECEIVED_AMT = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("ACTUAL_AMT")
+		'GAB_5564_AP_SA
+			
+			'FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set ACTUAL_AMT = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("INVOICENOTES")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set INVOICENOTES = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("JOB")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set JOB = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("SEQ")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set SEQ = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("SUFFIX")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set SUFFIX = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		F.Intrinsic.Control.Case("PART")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set PART = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("LOCATION")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set LOCATION = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("POLINE")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set POLINE = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("PORCVR")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set PORCVR = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("POSTED")
+		'GAB_5564_AP_SA
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set POSTED = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+		F.Intrinsic.Control.Case("POUM")
+		'GAB_5564_AP_SA
+			
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set POUM = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("QUANTITY")
+		'GAB_5564_AP_SA
+			
+			'FLOAT
+			V.Local.fFloat.Set(V.Args.Value)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set QUANTITY = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.fFloat,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("TAXABLEFLAG")
+		'GAB_5564_AP_SA
+			
+			'BOOLEAN
+			F.Intrinsic.Control.If(V.Args.Value)
+				V.Local.sFlag.Set("1")
+			F.Intrinsic.Control.Else
+				V.Local.sFlag.Set("0")
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set TAXABLEFLAG = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sFlag,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("TAXCODE")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set TAXCODE = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("VAT")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set VAT = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		
+		F.Intrinsic.Control.Case("VOUCHER")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set VOUCHER = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+		F.Intrinsic.Control.Case("PACKINGLIST")
+		'GAB_5564_AP_SA
+		
+			V.Local.sValue.Set(V.Args.Value.Trim)
+			F.Intrinsic.String.Build("Update GAB_5564_AP_SA Set PACKINGLIST = '{0}' Where DOCID = '{1}' and APAPPROVEID = '{2}';",V.Local.sValue.PSQLFriendly,V.Local.sDOCID,V.Local.sAPApproveID,V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(v.Local.ssql)
+			
+	F.Intrinsic.Control.EndSelect
+		
+		
+
+
+
+'		F.Intrinsic.Control.CaseAny("SODueDate","SODUEDATE")
+'			'Select the row
+'			f.Data.DataTable.SetValue("dtall",v.Args.rowindex,"ScheduleWO",true)
+'			
+'			'Update line item due date
+'			v.Local.ddate.set(V.DataTable.dtAll(v.args.rowindex).SODueDate!FieldValString)
+'			f.Intrinsic.String.Format(v.Local.ddate,"dd/mm/yyyy",v.Local.sdatesched)
+'			f.Intrinsic.String.Format(v.Local.ddate,"MMDDYY",v.Local.sdate)
+'			f.Intrinsic.String.Format(v.Local.ddate,"YYYYMMDD",v.Local.SDATELong)
+'			F.Intrinsic.String.Format(V.Local.ddate,"DD/MM/YY",V.Local.SDATEUS)
+'			F.Intrinsic.String.Concat("UPDATE ORDER_LINES SET DATE_ITEM_PROM='",v.Local.SDATELong,"', ITEM_PROMISE_DT='",v.Local.sdate,"' WHERE Order_No='",v.DataTable.dtAll(v.Args.rowindex).SO!fieldvaltrim,"' and Record_No='",v.DataTable.dtAll(v.args.rowindex).SOLine!fieldvaltrim,"0'",V.Local.sSQL)
+'			F.ODBC.Connection!con.Execute(v.Local.ssql)
+'						
+'			'Update line item due date
+'			v.Local.sJob.Set(v.DataTable.dtAll(v.Args.rowindex).WO!FIELDVALTRIM)
+'			v.Local.sSuf.Set(v.DataTable.dtAll(v.Args.rowindex).SUFFIX!FIELDVALTRIM)
+'			f.Intrinsic.String.Format(v.Local.ddate,"MMDDYY",v.Local.sdate)
+'			F.Intrinsic.String.Concat("UPDATE JOB_HEADER SET DATE_DUE='",v.Local.sdate,"' WHERE JOB='",v.Local.sJob,"' and SUFFIX='",V.Local.sSuf,"'",V.Local.sSQL)
+'			F.ODBC.Connection!con.Execute(v.Local.ssql)
+			
+'		F.Intrinsic.Control.CaseAny("NOTES","Notes")
+'			F.Intrinsic.String.Replace(V.Args.Value,"'","''",V.Local.sTextTbl)
+'			F.Intrinsic.String.Build("SELECT * FROM GAB_4167_SO_NOTES WHERE SO = '{0}' AND SOLINE = '{1}';",V.Local.sOrder,V.Local.sLine,V.Local.sSQL)
+'			F.ODBC.Connection!con.OpenRecordsetRW("rstNotes",V.Local.sSQL)
+'			F.Intrinsic.Control.If(V.ODBC.con!rstNotes.EOF,=,True)
+'				F.Intrinsic.String.Build("INSERT INTO GAB_4167_SO_NOTES(SO,SOLINE,NOTES) VALUES('{0}','{1}','{2}');",V.Local.sOrder,V.Local.sLine,V.Local.sTextTbl,V.Local.sSQL)
+'				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'			F.Intrinsic.Control.Else
+'				F.Intrinsic.String.Build("UPDATE GAB_4167_SO_NOTES SET NOTES = '{0}' WHERE SO = '{1}' AND SOLINE = '{2}';",V.Local.sTextTbl,V.Local.sOrder,V.Local.sLine,V.Local.sSQL)
+'				F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'			F.Intrinsic.Control.EndIf
+'			F.ODBC.con!rstNotes.Close
+'			F.Intrinsic.Control.CallSub(checknote,"SO",V.Local.sOrder,"Line",V.Local.sLine,"Note",V.Args.Value,"GV","gvRetry","SO_Note","NOTES")
+	
+			
+
+
+	
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.gsRetry_CellValueChanged.End
+
+Program.Sub.ddlGssStatus_Change.Start
+F.Intrinsic.Control.CallSub(Form_UserButtonClicked,"Button","Refresh")
+Program.Sub.ddlGssStatus_Change.End
+
+#End Region 'Tab Retry
+
+'Tab Manifest is not in use but will keep for a repsitory.
+#Region "Tab Manifest"
+
+Program.Sub.ac2_ElementClick.Start
+'f.Intrinsic.Control.Try
+'	
+'f.Intrinsic.Control.Catch
+'	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+'f.Intrinsic.Control.EndTry
+Program.Sub.ac2_ElementClick.End
+
+Program.Sub.gsManifest_RowCellClick.Start
+'Row cell click to the Transport note lines Form. this will have all the transpoprt note header information editable as well as the lines which will be editable.
+F.Intrinsic.Control.Try
+v.Local.iRowIndex.Declare
+	V.Local.iTNID.Declare
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	
+	F.Intrinsic.Control.BlockEvents
+	F.Intrinsic.Control.SelectCase(V.Args.Column.UCase)
+	F.Intrinsic.Control.Case("TRANSPORTNOTEID")
+		
+		Gui.Form.gsManifest.GetCellValueByColumnName("gvManifest","TRANSPORTNOTEID",V.Args.RowIndex,V.Local.iTNID)
+		
+			F.Intrinsic.Control.CallSub(LoadFormTransportHeader,"TNID",V.Local.iTNID)
+			F.Intrinsic.Control.CallSub(Load_TransportLines)
+			
+			gui.FormTranNote..Visible(True)
+			gui.FormTranNote..SetFocus
+		
+	F.Intrinsic.Control.EndSelect
+	F.Intrinsic.Control.UnBlockEvents
+		
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+	f.ODBC.Connection!conx.Close
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry
+Program.Sub.gsManifest_RowCellClick.End
+
+
+#End Region 'Tab Manifest
+
+#Region "AP Batch Upload"
+
+
+Program.Sub.APBatchUpload.Start
+f.Intrinsic.Control.Try
+	V.local.i.Declare
+	v.Local.sDOCID.Declare
+	v.Local.sLocalPO.Declare
+	v.Local.iItem.Declare
+	v.Local.sRowID.Declare
+	v.Local.sVendCode.Declare
+	v.Local.sInvoiceNumb.Declare
+	v.Local.sPOHead.Declare
+	v.Local.sPOLine.Declare
+	v.Local.sPORcvr.Declare
+	v.Local.sGLAccount.Declare
+	v.Local.sAPApproveID.Declare
+	v.Local.sNotes.Declare
+	v.Local.bTaxable.Declare
+	v.Local.sTaxable.Declare
+	v.Local.bBookTax.Declare
+	v.Local.sBookTax.Declare 
+	v.Local.sJob.Declare
+	v.Local.sTaxCode.Declare
+	v.Local.sSuffix.Declare
+	v.Local.sSEQ.Declare
+	v.Local.sDescription.Declare
+	v.Local.sLocation.Declare
+	v.Local.sCostType.Declare
+	v.Local.sBranch.Declare
+	v.Local.dInvcDate.Declare
+	v.Local.sInvcDate.Declare
+	v.Local.sVatRule.Declare
+	v.Local.sBuyer.Declare
+	v.Local.sPurchaseUM.Declare
+	v.Local.fReceivedAmount.Declare
+	v.Local.fInvoiceQTY.Declare
+	v.Local.fExtendedAmount.Declare
+	v.Local.fActualAmount.Declare
+	V.Local.fVariance.Declare
+	v.Local.fSubtotal.Declare
+	v.Local.sVoucher.Declare
+	v.Local.sDOCSAVEDLOCATION.Declare
+	v.Local.sPostDate.Declare
+	v.Local.ssql.Declare
+	v.Local.sPartNumb.Declare
+	v.Local.sinvoiceType.Declare
+	v.Local.sJobCheck.Declare
+	v.Local.sVendorCheck.Declare
+	v.Local.sFinalMessage.Declare
+	v.Local.sMessage.Declare
+	
+	'Get the company's currency code
+	V.Local.sCompCurrency.Declare
+	F.ODBC.Connection!ConX.executeandreturn("select rtrim(TEXT1) from OP_HEADER WHERE ID='000000' AND SEQUENCE='0000'",v.Local.sCompCurrency)
+
+	v.Local.sVendCurrency.Declare
+	v.Local.fExchAmt.Declare
+	
+	v.Local.bhasinvoice.Declare
+	v.Local.bhasaccural.Declare
+	v.Local.bhasinvoice.Set(False)
+	v.Local.bhasaccural.Set(False)
+	'Clear Contents of file
+	v.Local.sAPFile.Declare
+	v.Local.bFileCheck.Declare
+	v.Local.bIgnore.Declare
+	
+	'Idealy here we would want to check if anyone else is currently uploading a batch so we dont delete it at the same time.
+	
+	f.Intrinsic.String.Concat(v.Caller.FilesDir,"\APBATCH_INVACRbb.TXT",v.Local.sAPFile)
+	f.Intrinsic.File.Exists(v.Local.sAPFile,v.Local.bFileCheck)
+	f.Intrinsic.Control.If(v.Local.bFileCheck)
+		f.Intrinsic.File.DeleteFile(v.Local.sAPFile)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Concat(v.Caller.FilesDir,"\APBATCH_UPLOADbb.TXT",v.Local.sAPFile)
+	f.Intrinsic.File.Exists(v.Local.sAPFile,v.Local.bFileCheck)
+	f.Intrinsic.Control.If(v.Local.bFileCheck)
+		f.Intrinsic.File.DeleteFile(v.Local.sAPFile)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtApprovedProcessing.Exists)
+		f.Data.DataTable.Close("dtApprovedProcessing")
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataTable.CreateFromSQL("dtApprovedProcessing0",conx,"SELECT * FROM V_GAB_5564_AP_ALL order by DOCID",TRUE)
+
+	'f.Data.DataTable.CreateFromSQL("dtApprovedProcessing0",conx,"SELECT * FROM V_GAB_5564_AP_ALL WHERE Posted=0 AND GssStatus = 'approved' order by DOCID",TRUE)
+	'f.Intrinsic.Debug.ShowCallerInfo
+	F.Data.Datatable.AcceptChanges("dtRetry")
+	F.Data.Dictionary.CreateFromDataTable("dictDocId","dtRetry","DOCID","Sel")
+	'F.Data.Dictionary.SetDefaultReturn("dictDocId",False)
+	F.Data.DataTable.AddColumn("dtApprovedProcessing0","Sel","Boolean",False)
+	F.Data.DataTable.FillFromDictionary("dtApprovedProcessing0","dictDocId","DOCID","Sel")
+	F.Data.Dictionary.Close("dictDocId")
+	
+	'F.Data.Datatable.AcceptChanges("dtApprovedProcessing0")
+	F.Data.DataView.Create("dtApprovedProcessing0","dvApprovedProcessing0",22,"sel = True","DOCID")
+	F.Data.DataView.ToDataTable("dtApprovedProcessing0","dvApprovedProcessing0","dtApprovedProcessing",True)	
+	
+	F.Data.DataView.Close("dtApprovedProcessing0","dvApprovedProcessing0")
+	F.Data.Datatable.Close("dtApprovedProcessing0")
+	
+	F.Intrinsic.Control.If(V.DataTable.dtApprovedProcessing.RowCount,=,0)
+		F.Intrinsic.UI.Msgbox("No lines were found... Please set POSTED to False and GssStatus to approved before trying again.")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.For(v.Local.i,0,v.DataTable.dtApprovedProcessing.RowCount--,1)
+'		F.Intrinsic.Control.If(V.DataTable.dtApprovedProcessing(V.Local.i).Sel!fieldval,=,False)
+'			F.Intrinsic.Control.Next(V.Local.i)
+'		F.Intrinsic.Control.EndIf
+		'f.Intrinsic.Debug.ShowCallerInfo
+		'post date
+		v.Local.sPostDate.set(v.Screen.Form!dtp1.Value)
+		f.Intrinsic.String.Format(v.Local.sPostDate,"MMDDYY",v.Local.sPostDate)
+		'DOCID
+		v.Local.sDOCID.Set(v.DataTable.dtApprovedProcessing(v.Local.i).DOCID!fieldval)
+		'PORCVR
+		v.Local.sPORcvr.Set(v.DataTable.dtApprovedProcessing(v.Local.i).PORCVR!fieldval)
+		'Vendor 
+		v.Local.sVendCode.Set(v.DataTable.dtApprovedProcessing(v.Local.i).VENDCODE!fieldval)
+		'Invoice 
+		v.Local.sInvoiceNumb.Set(v.DataTable.dtApprovedProcessing(v.Local.i).INVCNUMB!fieldval)
+		'InvoiceDate 
+		v.Local.sInvcDate.Set(v.DataTable.dtApprovedProcessing(v.Local.i).INVCDATE!fieldval)
+		f.Intrinsic.String.Format(v.Local.sInvcDate,"MMDDYY",v.Local.sInvcDate)
+		'Vendor Currency
+		F.Intrinsic.Control.If(v.DataTable.dtApprovedProcessing(v.Local.i).EXCH_CURR!Fieldvaltrim,=,"")
+			V.Local.sVendCurrency.Set(V.Local.sCompCurrency)
+		f.Intrinsic.Control.Else
+			v.Local.sVendCurrency.Set(v.DataTable.dtApprovedProcessing(v.Local.i).EXCH_CURR!Fieldvaltrim)
+		F.Intrinsic.Control.EndIf
+		'Receipt Amount
+		v.Local.fReceivedAmount.Set(v.DataTable.dtApprovedProcessing(v.Local.i).RECEIVED_AMT!fieldval)
+		'Actual Amount
+		f.Intrinsic.Control.If(v.Local.sVendCurrency.Trim,<>,v.Local.sCompCurrency.Trim)
+			v.Local.fActualAmount.Set(v.DataTable.dtApprovedProcessing(v.Local.i).EXCH_AMT!fieldval)
+		f.Intrinsic.Control.Else
+			v.Local.fActualAmount.Set(v.DataTable.dtApprovedProcessing(v.Local.i).ACTUAL_AMT!fieldval)
+		f.Intrinsic.Control.EndIf
+		'SUBTOTAL
+		v.Local.fSubtotal.Set(v.DataTable.dtApprovedProcessing(v.Local.i).SUBTOTAL!fieldval)
+		'GLAccount 
+		v.Local.sGLAccount.Set(v.DataTable.dtApprovedProcessing(v.Local.i).GLACCOUNT!fieldval)
+		'TaxableFlag 
+		v.Local.bTaxable.Set(v.DataTable.dtApprovedProcessing(v.Local.i).TAXABLEFLAG!fieldval)
+		f.Intrinsic.Control.If(v.Local.bTaxable)
+			v.Local.sTaxable.Set("Y")
+		f.Intrinsic.Control.Else
+			v.Local.sTaxable.Set("N")
+		f.Intrinsic.Control.EndIf 
+		'TaxCode
+		v.Local.sTaxCode.Set(v.DataTable.dtApprovedProcessing(v.Local.i).TAXCODE!fieldval)
+		'BookSelfTax 
+		v.Local.bBookTax.Set(v.DataTable.dtApprovedProcessing(v.Local.i).BookSelfTax!fieldval)
+		f.Intrinsic.Control.If(v.Local.bBookTax)
+			v.Local.sBookTax.Set("Y")
+		f.Intrinsic.Control.Else
+			v.Local.sBookTax.Set("N")
+		f.Intrinsic.Control.EndIf
+		'WorkOrder 
+		v.Local.sJob.Set(v.DataTable.dtApprovedProcessing(v.Local.i).JOB!fieldval)
+		'WorkSuff 
+		v.Local.sSuffix.Set(v.DataTable.dtApprovedProcessing(v.Local.i).SUFFIX!fieldval)
+		'WorkSeq 
+		v.Local.sSEQ.Set(v.DataTable.dtApprovedProcessing(v.Local.i).SEQ!fieldval)
+		'Branch 
+		v.Local.sBranch.Set(v.DataTable.dtApprovedProcessing(v.Local.i).BRANCH!fieldval)
+		'PurchaseOrder 
+		v.local.sPOHead.Set(v.DataTable.dtApprovedProcessing(v.Local.i).POHEAD!fieldval)
+		f.Intrinsic.Control.If(v.Local.sPOHead.Trim,=,"MULTIPO")
+			v.Local.sPOHead.Set(v.DataTable.dtApprovedProcessing(v.Local.i).PACKINGLIST!Fieldvaltrim)
+		f.Intrinsic.Control.EndIf
+		'PurchaseOrderLine 
+		v.Local.sPOLine.Set(v.DataTable.dtApprovedProcessing(v.Local.i).POLINE!fieldval)
+		'PurchaseUoM 
+		v.Local.sPurchaseUM.Set(v.DataTable.dtApprovedProcessing(v.Local.i).POUM!fieldval)
+		'InvoiceQuantity 
+		v.Local.fInvoiceQTY.Set(v.DataTable.dtApprovedProcessing(v.Local.i).QUANTITY!fieldval)
+		'Extended Amount
+		f.Intrinsic.Control.If(v.Local.sVendCurrency.Trim,<>,v.Local.sCompCurrency.Trim)
+			'Don't think variance amount is being used, might delete out.
+			f.Intrinsic.Math.Mult(v.Local.fInvoiceQTY,v.Local.fExchAmt,v.Local.fExtendedAmount)
+			f.Intrinsic.Math.Round(v.Local.fExtendedAmount,2,v.Local.fExtendedAmount)
+			'Variance Amount Calculation
+			f.Intrinsic.Math.Sub(v.Local.fActualAmount,v.Local.fExtendedAmount,v.Local.fVariance)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.Math.Mult(v.Local.fInvoiceQTY,v.Local.fReceivedAmount,v.Local.fExtendedAmount)
+			f.Intrinsic.Math.Round(v.Local.fExtendedAmount,2,v.Local.fExtendedAmount)
+			'Variance Amount Calculation
+			f.Intrinsic.Math.Sub(v.Local.fActualAmount,v.Local.fExtendedAmount,v.Local.fVariance)
+		f.Intrinsic.Control.Else
+		
+		f.Intrinsic.Control.EndIf
+		'Buyer 
+		v.Local.sBuyer.Set(v.DataTable.dtApprovedProcessing(v.Local.i).BUYER!fieldval)
+		'Voucher 
+		v.Local.sVoucher.Set(v.DataTable.dtApprovedProcessing(v.Local.i).VOUCHER!fieldval)
+		'VatTaxRule
+		v.Local.sVatRule.Set(v.DataTable.dtApprovedProcessing(v.Local.i).VAT!fieldval)
+		'Part 
+		v.Local.sPartNumb.Set(v.DataTable.dtApprovedProcessing(v.Local.i).PART!fieldval)
+		'Location 
+		v.Local.sLocation.Set(v.DataTable.dtApprovedProcessing(v.Local.i).LOCATION!fieldval)
+		'CostType 
+		v.Local.sCostType.Set(v.DataTable.dtApprovedProcessing(v.Local.i).COSTTYPE!fieldval)
+		'InvoiceNotes 
+		v.Local.sNotes.Set(v.DataTable.dtApprovedProcessing(v.Local.i).NOTES!fieldval)
+		f.Intrinsic.String.Replace(v.Local.sNotes,v.Ambient.NewLine,"",v.Local.sNotes)
+		'Line ID
+		v.Local.sAPApproveID.Set(v.DataTable.dtApprovedProcessing(v.Local.i).APApproveID!fieldval)
+		'invoice Type
+		v.Local.sinvoiceType.Set(v.DataTable.dtApprovedProcessing(v.Local.i).INVOICETYPE!fieldval)
+		'docsavedlocation
+		'f.Intrinsic.Debug.ShowCallerInfo
+		v.Local.sDOCSAVEDLOCATION.Set(v.DataTable.dtApprovedProcessing(v.Local.i).docsavedlocation!fieldval)
+		f.Intrinsic.Control.CallSub(createDocumentLink,"FilePath",v.Local.sDOCSAVEDLOCATION,"Vendor",v.Local.sVendCode,"Invoice",v.Local.sInvoiceNumb)
+		
+		'Check Vendor
+		F.Intrinsic.Control.If(v.Local.sPOHead.Trim,<>,"")
+			F.Intrinsic.Control.If(V.Local.sPOHead.Trim,<>,"MULTIPO")
+				f.Intrinsic.Control.CallSub(checkVendorMatches,"PO",v.Local.sPOHead,"Receiver",v.Local.sPORcvr)
+				f.Intrinsic.Variable.ArgToVar("rVendor",v.Local.sVendorCheck)
+				f.Intrinsic.Control.If(v.Local.sVendorCheck.Trim,<>,"")
+				f.Intrinsic.Control.AndIf(v.Local.sinvoiceType.Trim,=,"a")
+					F.Intrinsic.Control.If(V.Local.sVendorCheck.Trim,<>,V.Local.sVendCode.Trim)
+						V.Local.bIgnore.Set(True)
+						f.Intrinsic.String.Concat("Vendor does not match on invoice ",v.Local.sInvoiceNumb,".  Record rejected.", v.Local.sMessage)
+						f.Intrinsic.String.Concat(v.Local.sFinalMessage,v.Local.sMessage,v.Ambient.NewLine,v.Local.sFinalMessage)
+					F.Intrinsic.Control.EndIf
+				f.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		
+		
+		F.Intrinsic.Control.If(v.Local.sJob.Trim,<>,"")
+			f.Intrinsic.Control.CallSub(checkJobExists,"JOB",v.Local.sJob,"SUFFIX",v.Local.sSuffix,"SEQ",v.Local.sSEQ)
+			f.Intrinsic.Variable.ArgToVar("rJobCheck",v.Local.sJobCheck)
+			f.Intrinsic.Control.If(v.Local.sJobCheck.Trim,=,"No Job")
+				v.Local.bIgnore.Set(True)
+				f.Intrinsic.String.Concat("Job does not exist on invoice ",v.Local.sInvoiceNumb,".  Record rejected.", v.Local.sMessage)
+				f.Intrinsic.String.Concat(v.Local.sFinalMessage,v.Local.sMessage,v.Ambient.NewLine,v.Local.sFinalMessage)
+			f.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		
+		F.Intrinsic.Control.If(V.Local.sTaxCode.Trim,=,"")
+			V.Local.bIgnore.Set(TRUE)
+			f.Intrinsic.String.Concat("Tax code not present on invoice ",v.Local.sInvoiceNumb,".  Record rejected.", v.Local.sMessage)
+			f.Intrinsic.String.Concat(v.Local.sFinalMessage,v.Local.sMessage,v.Ambient.NewLine,v.Local.sFinalMessage)
+		F.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.If(v.Local.bIgnore,=,False)
+			f.Intrinsic.Control.If(v.Local.sinvoiceType,=,"i")
+				'if only one line then eubtract gst fron total
+				v.Local.bhasinvoice.Set(True)
+				f.Data.DataTable.AddRow("AP043UP1","PostDate",v.Local.sPostDate,"Vendor",v.Local.sVendCode,"Invoice",v.Local.sInvoiceNumb,"InvoiceDate",v.Local.sInvcDate,"Amount",v.Local.fActualAmount,"GLAccount",v.Local.sGLAccount,"TaxableFlag",v.Local.sTaxable,"TaxCode",v.Local.sTaxCode,"InvoiceNotes",v.Local.sNotes,"BookSelfAccessTax",v.Local.sBookTax,"WorkOrder",v.Local.sJob,"WorkSuff",v.Local.sSuffix,"WorkSeq",v.Local.sSEQ,"Branch",v.Local.sBranch,"PurchaseOrder",v.local.sPOHead,"Buyer",v.Local.sBuyer,"Voucher",v.Local.sVoucher)			
+			f.Intrinsic.Control.ElseIf(v.Local.sinvoiceType,=,"a")
+				v.Local.bhasaccural.Set(True)
+				f.Data.DataTable.AddRow("AP043RIA","PostDate",v.Local.sPostDate,"Vendor",v.Local.sVendCode,"Invoice",v.Local.sInvoiceNumb,"InvoiceDate",v.Local.sInvcDate,"Amount",v.Local.fActualAmount,"GLAccount",v.Local.sGLAccount,"TaxableFlag",v.Local.sTaxable,"TaxCode",v.Local.sTaxCode,"BookSelfAccessTax",v.Local.sBookTax,"WorkOrder",v.Local.sJob,"WorkSuff",v.Local.sSuffix,"WorkSeq",v.Local.sSEQ,"Branch",v.Local.sBranch,"PurchaseOrder",v.local.sPOHead,"PurchaseOrderLine",v.Local.sPOLine,"PurchaseUoM",v.Local.sPurchaseUM,"Receiver",v.Local.sPORcvr,"InvoiceQuantity",v.Local.fInvoiceQTY,"Buyer",v.Local.sBuyer,"Voucher",v.Local.sVoucher,"VatTaxRule",v.Local.sVatRule,"Part",v.Local.sPartNumb,"Location",v.Local.sLocation,"CostType",v.Local.sCostType,"InvoiceNotes",v.Local.sNotes)
+			f.Intrinsic.Control.EndIf
+			'f.Intrinsic.Debug.ShowCallerInfo
+			'updating the head table to status processes and making the line as posted
+			f.Intrinsic.String.Build("UPDATE GAB_5564_AP_SA SET POSTED=1 WHERE APApproveID={0}",v.Local.sAPApproveID,v.Local.ssql)
+			f.ODBC.Connection!conx.Execute(v.Local.ssql)
+		
+			v.Local.dLocaldate.Declare
+			v.Local.dLocaldate.Set(v.Ambient.Date)
+			f.Intrinsic.String.Build("UPDATE GAB_5564_AP_HEAD SET PROCESSED=1, GSSStatus='processed', processeddate='{1}'  WHERE DocID='{0}'",v.Local.sDOCID,v.Local.dLocaldate.PervasiveDate,v.Local.ssql) 
+			f.ODBC.Connection!conx.Execute(v.Local.ssql)
+		F.Intrinsic.Control.EndIf
+		
+		V.Local.bIgnore.Set(False)
+	f.Intrinsic.Control.Next(v.Local.i)
+	f.Intrinsic.UI.Msgbox(v.Local.sFinalMessage)
+	'f.Intrinsic.Debug.ShowCallerInfo
+	
+	f.Intrinsic.Control.If(V.Local.bhasaccural,=,True)
+		f.Intrinsic.Control.CallSub(AP043RIASync) 'CREATES THE BATCH
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(V.Local.bhasinvoice,=,True)
+		f.Intrinsic.Control.CallSub(AP043UP1Sync) 'CREATES THE BATCH
+	f.Intrinsic.Control.EndIf
+	
+	'Set all targets to 0, don't like this but need to do it for this to work
+	f.ODBC.Connection!conx.execute("UPDATE AP_OPEN_BATCHES SET TARGET_AMOUNT=0")
+	
+	'Verify the tax calculations
+	f.Intrinsic.Control.CallSub(checkTaxAfterInvoiceUpload)
+	
+	F.Global.General.CallWrapperSync("50","AP0081") 'POST BACTCH
+		
+	F.Intrinsic.Control.CallSub(Form_UserButtonClicked,"Button","Refresh")
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+
+Program.Sub.APBatchUpload.End
+
+
+Program.Sub.checkJobExists.Start
+f.Intrinsic.Control.Try
+	v.Local.ssql.Declare
+	v.Local.sret.Declare
+	v.Local.sJob.Declare
+	v.Local.sResult.Declare
+	f.Intrinsic.String.Build("SELECT JOB FROM V_JOB_OPERATIONS WHERE JOB='{0}' AND SUFFIX='{1}' AND SEQ='{2}'",v.Args.Job,v.Args.Suffix,v.Args.Seq,v.Local.ssql)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.ssql,v.Local.sJob)
+	f.Intrinsic.Control.If(v.Local.sJob.Trim,=,"")
+		v.Local.sResult.Set("No Job")
+	f.Intrinsic.Control.Else
+		v.Local.sResult.Set("")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Variable.AddRV("rJobCheck",v.Local.sresult)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.checkJobExists.End
+
+Program.Sub.checkVendorMatches.Start
+f.Intrinsic.Control.Try
+	v.Local.sSql.Declare
+	v.Local.sVendor.Declare
+	f.Intrinsic.String.Build("SELECT DISTINCT vendor from PO_RECEIVER WHERE PURCHASE_ORDER='{0}' AND RIGHT(RECEIVER_NO,1)='A' AND RECEIVER_NO='{1}'",v.Args.PO,V.Args.Receiver,v.Local.sSql)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSql,v.Local.sVendor)
+	f.Intrinsic.Variable.AddRV("rVendor",v.Local.sVendor)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.checkVendorMatches.End
+
+Program.Sub.createDocumentLink.Start
+f.Intrinsic.Control.Try
+	V.Local.sLink.Declare
+	v.Local.iLink.Declare
+	v.Local.iFiEx.Declare
+	v.Local.sVendorInvoice.Declare
+	v.Local.sSql.Declare
+	v.Local.sFTyp.Declare
+	v.Local.sTmpF.Declare
+	v.Local.sNewDir.Declare
+	V.Local.sLinkCheck.Declare
+	F.Intrinsic.File.GetPathFromFQN(V.Args.FilePath,v.Local.sNewDir)
+	f.Intrinsic.File.GetFileNameFromFQN(v.Args.filepath,v.Local.sTmpF)
+	
+	f.Intrinsic.String.Concat(v.Args.Vendor,v.Args.Invoice,v.Local.sVendorInvoice)
+	
+	'Check if it exists
+	f.Intrinsic.String.Build("select link_id from LINK_DATA WHERE TYPE='00011' AND ID='{0}'",v.Local.sVendorInvoice,v.Local.sSql)
+	f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.sLink)
+	f.Intrinsic.Control.If(v.Local.sLink.Trim,=,"")
+		'Create the link
+		F.ODBC.Connection!conx.ExecuteAndReturn("SELECT ifnull(MAX(LINK_ID),0) AS 'LinkID' FROM LINK_DATA",v.Local.sLink)
+		f.Intrinsic.Math.ConvertToLong(v.Local.sLink,v.Local.iLink)
+		f.Intrinsic.Math.Add(v.Local.iLink,1,v.Local.iLink)
+		f.Intrinsic.string.LPad(v.Local.iLink,"0",9,v.Local.sLink)
+		f.Intrinsic.String.Build("INSERT INTO LINK_DATA (LINK_ID,TYPE,ID) VALUES('{0}','{1}','{2}')",v.Local.sLink,"00011",v.Local.sVendorInvoice,v.Local.ssql)
+		f.ODBC.Connection!conx.execute(v.Local.ssql)
+		
+		'Create the association for the Vendor Invoice
+		f.Intrinsic.String.InstrRev(v.Args.FilePath,".",v.Local.iFiEx)
+		f.Intrinsic.String.Mid(v.Args.FilePath,v.Local.iFiEx,v.Local.sFTyp)
+		f.Intrinsic.String.Replace(v.Local.sFTyp,".","",v.Local.sFTyp)
+		v.Local.ssql.Set("INSERT INTO ATG_DOC_ASSOC VALUES ('','{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','','','','',0)")
+		F.Intrinsic.String.Build(V.Local.SSQL,v.local.iLink,v.Local.sFTyp.UCase,v.Local.sNewDir,v.Local.sTmpF,"AP Invoice",v.Ambient.Now.PervasiveDate,v.Caller.User,v.Global.sDocumentGroup,v.Local.ssql)
+		f.ODBC.Connection!conx.execute(v.Local.ssql)
+	f.Intrinsic.Control.Else
+		'REference the link, will likely delete this.
+		f.Intrinsic.Math.ConvertToLong(v.Local.sLink,v.Local.iLink)
+		f.Intrinsic.Math.Add(v.Local.iLink,1,v.Local.iLink)
+		f.Intrinsic.string.LPad(v.Local.iLink,"0",9,v.Local.sLink)
+	f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+	f.ODBC.Connection!conx.Close
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry
+Program.Sub.createDocumentLink.End
+
+Program.Sub.checkTaxAfterInvoiceUpload.Start
+f.Intrinsic.Control.Try
+	V.Local.sSql.Declare
+	v.Local.sRet.Declare
+	v.Local.sInvoice.Declare
+	v.Local.sAPAccount.Declare
+	V.Local.sTaxCode.Declare
+	v.Local.sTaxAcct.Declare
+	v.Local.sBatchNum.Declare
+	v.Local.sVendorID.Declare
+	V.Local.sCompCurr.Declare
+	v.Local.sVendCurr.Declare
+	v.Local.bForeign.Declare
+	
+	v.Local.fInvoiceAmt.Declare
+	v.Local.fBatchInvoiceAmt.Declare
+	v.Local.fDifference.Declare
+	v.Local.fGSTAmt.Declare
+	
+	v.Local.i.Declare
+	v.Local.j.Declare(long)
+	
+	f.Intrinsic.Control.If(v.DataTable.dtApprovedInvoices.Exists)
+		f.Data.DataTable.Close("dtApprovedInvoices")
+	f.Intrinsic.Control.EndIf
+	
+	'Get the company's AP account
+	F.ODBC.Connection!conx.executeandreturn("SELECT text1 FROM op_header where ID=402455 AND SEQUENCE=0000",v.Local.sAPAccount)
+	
+	'Get the company's currency code
+	F.ODBC.Connection!conx.executeandreturn("select ISO_CODE from COMPANY_CURRENCY WHERE CTLG_FLAG='Y'",v.Local.sCompCurr)
+	
+	'Bring all the distinct intvoices together in a datable and loop through them
+	f.Data.DataView.Create("dtApprovedProcessing","dvApprovedProcessing",22,"","")
+	f.Data.DataView.ToDataTableDistinct("dtApprovedProcessing","dvApprovedProcessing","dtApprovedInvoices","INVCNUMB*!*SubTotal*!*GSTTotal*!*TAXCODE*!*VENDCODE")
+	f.Intrinsic.Control.For(v.Local.i,0,v.DataTable.dtApprovedInvoices.RowCount--,1)
+		
+		'Set Variables
+		v.Local.sTaxCode.Set(v.DataTable.dtapprovedinvoices(v.Local.i).TAXCODE!Fieldvaltrim)
+		v.Local.sInvoice.Set(v.DataTable.dtApprovedInvoices(v.Local.i).INVCNUMB!Fieldvaltrim)
+		v.Local.sVendorID.Set(v.DataTable.dtapprovedinvoices(v.Local.i).VENDCODE!Fieldvaltrim)
+		v.Local.fGSTAmt.Set(v.DataTable.dtapprovedinvoices(v.Local.i).GSTTOTAL!Fieldval)
+		f.Intrinsic.Math.Add(v.DataTable.dtapprovedINvoices(v.Local.i).GSTTotal!fieldval,v.DataTable.dtApprovedInvoices(v.Local.i).Subtotal!fieldval,v.Local.fInvoiceAmt)
+		f.Intrinsic.Math.Round(v.Local.fInvoiceAmt,2,v.Local.fInvoiceAmt)
+		
+		'Check if Vendor is International
+		f.Intrinsic.String.Build("select DEFAULT_CURRENCY from V_VENDOR_INTL where vendor='{0}'",v.Local.sVendorID,v.Local.sSql)
+		f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.sVendCurr)
+		
+		'Only do the check if the currency is the same as the company currency
+		f.Intrinsic.Control.If(v.Local.sVendCurr.Trim,=,v.Local.sCompCurr.Trim)
+			'Query AP Open Batches for the invoice
+			f.Intrinsic.String.Build("SELECT TEMP_AMT FROM AP_OPEN_BATCHES WHERE INVC='{0}' AND GL_ACCT='{1}'",v.Local.sInvoice,v.Local.sAPAccount.Trim,v.Local.sSql)
+			f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.fBatchInvoiceAmt)
+			F.Intrinsic.Math.Abs(V.Local.fBatchInvoiceAmt,V.Local.fBatchInvoiceAmt)
+			'Determine if the invoice value matches
+			f.Intrinsic.Control.If(v.Local.fBatchInvoiceAmt,<>,v.Local.fInvoiceAmt)
+				
+				'generally the batch is higher than the invoice, calculate the difference
+				f.Intrinsic.Math.Sub(v.Local.fBatchInvoiceAmt,v.Local.fInvoiceAmt,v.Local.fDifference)
+				f.Intrinsic.Math.Round(v.local.fDifference,2,v.Local.fDifference)
+				
+				'Grab the tax GL Code
+				f.Intrinsic.String.Build("SELECT VAT_INPUT_ACCT FROM AR_TAX_TABLES WHERE CONCAT(ZONE,AUTH)='{0}'",v.Local.sTaxCode,v.Local.sSql)
+				f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.sTaxAcct)
+				'VAT might not be used, so if blank, check the normal place for payable GST
+				F.Intrinsic.Control.If(v.Local.sTaxAcct.Trim,=,"")
+					f.Intrinsic.String.Build("SELECT VAT_EXP_ACCT FROM AR_TAX_TABLES WHERE CONCAT(ZONE,AUTH)='{0}'",v.Local.sTaxCode,v.Local.sSql)
+					f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.sTaxAcct)
+				F.Intrinsic.Control.EndIf
+				
+				'start correction
+				'Update invoice figure
+				F.Intrinsic.Math.Mult(V.Local.fInvoiceAmt,"-1",V.Local.fInvoiceAmt)
+				f.Intrinsic.String.Build("UPDATE AP_OPEN_BATCHES SET TEMP_AMT={0} WHERE GL_ACCT='{1}' AND INVC='{2}'",v.Local.fInvoiceAmt,v.Local.sAPAccount,v.Local.sInvoice,v.Local.sSql)
+				f.ODBC.Connection!conx.execute(v.Local.sSql)
+				
+				'Update the tax figure
+				f.Intrinsic.String.Build("UPDATE AP_OPEN_BATCHES SET TEMP_AMT={0} WHERE GL_ACCT='{1}' AND INVC='{2}'",V.Local.fGSTAmt,v.Local.sTaxAcct,v.Local.sInvoice,v.Local.sSql)
+				f.ODBC.Connection!conx.execute(v.Local.sSql)
+				
+				'Take it off the first line
+				f.Intrinsic.String.Build("UPDATE AP_OPEN_BATCHES SET INVC_TAX_AMT=INVC_TAX_AMT-{0} WHERE LN='1' AND INVC='{1}'",V.Local.fDifference,v.Local.sInvoice,v.Local.sSql)
+				f.ODBC.Connection!conx.execute(v.Local.sSql)
+				
+				'Grab the batchnum
+				f.Intrinsic.String.Build("SELECT BATCH FROM AP_OPEN_BATCHES WHERE LN='1' AND INVC='{0}'",v.Local.sInvoice,v.Local.sSql)
+				f.ODBC.Connection!conx.executeandreturn(v.Local.sSql,v.Local.sBatchNum)
+				
+				'Update INVC DTL Vat table taking off the different
+				f.Intrinsic.String.Build("UPDATE INVC_DTL_VAT SET TAX_AMOUNT=TAX_AMOUNT-{0} WHERE BATCH_LINE='00001' AND INVOICE='{1}' AND BATCH_NUM='{2}' AND VENDOR_ID='{3}'",V.Local.fDifference,v.Local.sInvoice,v.Local.sBatchNum,v.Local.sVendorID,v.Local.sSql)
+				f.ODBC.Connection!conx.execute(v.Local.sSql)
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.i)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.checkTaxAfterInvoiceUpload.End
+
+
+#End Region ' AP Batch Upload
+
+'Might turn this into a vendor look up for editing the vendor.
+Program.Sub.cmdCustomerLookUp_Click.Start
+f.Intrinsic.Control.Try
+
+V.Local.sSQL.Declare(String)
+V.Local.sCol.Declare(String)
+V.Local.sColW.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Local.sSQL.Set("SELECT RTRIM(CUSTOMER) as CUSTOMER, NAME_CUSTOMER FROM V_CUSTOMER_MASTER")
+'Split Column Names into an array (*!* delimited string)
+F.Intrinsic.String.Split("Customer Number*!*Name Customer","*!*",V.Local.sCol)
+'Split Column widths into an array (*!* delimited string)
+F.Intrinsic.String.Split("600*!*3000","*!*",V.Local.sColW)
+F.Intrinsic.UI.Browser("CUSTOMER BROWSER","Conx",V.Local.sSQL,V.Local.sCol,V.Local.sColW,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	gui.Form.txtCustomer.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdCustomerLookUp_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8769.31171$}$1
+${$6$}$david.odell$}$20240212141633777$}$I8i050MtBVowFqmWXDxeXBeY1kmC2EBn5S5xFxQ1UfBPNiBWCdyXzNzQHwEelrlp7n+AJMdMaVyQBSaHZg+ljg==
+Program.Sub.Comments.End
