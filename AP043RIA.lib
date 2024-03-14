@@ -1,0 +1,180 @@
+Program.Sub.Preflight.Start
+v.Global.sAP043RIA.Declare
+F.Data.Datatable.Create("AP043RIA",True)
+F.Data.Datatable.AddColumn("AP043RIA","PostDate","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","Vendor","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","Invoice","String","               ")
+F.Data.Datatable.AddColumn("AP043RIA","InvoiceDate","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","InvoiceDueDate","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","Amount","String")
+F.Data.Datatable.AddColumn("AP043RIA","GLAccount","String","               ")
+F.Data.Datatable.AddColumn("AP043RIA","TaxableFlag","String"," ")
+F.Data.Datatable.AddColumn("AP043RIA","TaxCode","String","     ")
+F.Data.Datatable.AddColumn("AP043RIA","BookSelfAccessTax","String"," ")
+F.Data.Datatable.AddColumn("AP043RIA","WorkOrder","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","WorkSuff","String","   ")
+F.Data.Datatable.AddColumn("AP043RIA","WorkSeq","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","Branch","String","  ")
+F.Data.Datatable.AddColumn("AP043RIA","PurchaseOrder","String","       ")
+F.Data.Datatable.AddColumn("AP043RIA","PurchaseOrderLine","String","   ")
+F.Data.Datatable.AddColumn("AP043RIA","PurchaseUoM","String","   ")
+F.Data.Datatable.AddColumn("AP043RIA","Receiver","String","      ")
+F.Data.Datatable.AddColumn("AP043RIA","InvoiceQuantity","String")
+F.Data.Datatable.AddColumn("AP043RIA","Price","String")
+F.Data.Datatable.AddColumn("AP043RIA","Buyer","String","   ")
+F.Data.Datatable.AddColumn("AP043RIA","Voucher","String","       ")
+F.Data.Datatable.AddColumn("AP043RIA","VatTaxRule","String","  ")
+F.Data.Datatable.AddColumn("AP043RIA","Part","String","                                      ")
+F.Data.Datatable.AddColumn("AP043RIA","Location","String","  ")
+F.Data.Datatable.AddColumn("AP043RIA","CostType","String")
+F.Data.Datatable.AddColumn("AP043RIA","InvoiceNotes","String")
+
+Program.Sub.Preflight.End
+
+Program.Sub.AP043RIASync.Start
+F.Intrinsic.Control.Try
+	F.Intrinsic.Control.CallSub(AP043RIA,"CallWrapperType",0)
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(CatchErrorAP043RIA,"Sub",V.Ambient.CurrentSubroutine,"ErrNo",V.Ambient.ErrorNumber,"ErrDesc",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.AP043RIASync.End
+
+Program.Sub.AP043RIAASync.Start
+F.Intrinsic.Control.Try
+	F.Intrinsic.Control.CallSub(AP043RIA,"CallWrapperType",1)
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(CatchErrorAP043RIA,"Sub",V.Ambient.CurrentSubroutine,"ErrNo",V.Ambient.ErrorNumber,"ErrDesc",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.AP043RIAASync.End
+
+Program.Sub.AP043RIA.Start
+F.Intrinsic.Control.Try
+	V.Local.sFilePath.Declare(String)
+	V.Local.sFileContents.Declare(String)
+	v.Local.sTempBackup.Declare(string)
+	V.Local.sRet.Declare(String)
+	V.Local.iCount.Declare(Long)
+	V.Local.sBackupFile.Declare
+	V.Local.sTimeStamp.Declare
+	f.Intrinsic.String.Format(v.Ambient.Now,"YYYYMMDD HHNNSS",v.Local.sTimeStamp)
+	
+	F.Intrinsic.String.Build("{0}\APBATCH_INVACRbb.TXT",V.Caller.FilesDir,V.Local.sFilePath)
+	F.Intrinsic.String.Build("{0}\AP_AUTO_ACCRUAL_{1}.TXT",V.Caller.FilesDir,v.Local.sTimeStamp,V.Local.sBackupFile)
+	f.Intrinsic.String.Format(v.Ambient.Date,"YYYYMMDDHHNNSS",v.Local.sTimeStamp)
+	f.Intrinsic.String.Concat(v.Caller.FilesDir,"\AP",v.Local.sTimeStamp,v.Local.sTempBackup)
+	'Create dataview, create string from it, close dataview, write string to file, then finally call the callwrapper accoring to how the programmer called
+	F.Intrinsic.Control.If(V.DataTable.AP043RIA.RowCount,>,0)
+		'Format data in each row as needed by the upload program
+		F.Intrinsic.Control.For(V.Local.iCount,0,V.DataTable.AP043RIA.RowCount--,1)
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).PostDate!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"PostDate",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Vendor!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Vendor",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Invoice!FieldVal," ",15,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Invoice",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).InvoiceDate!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"InvoiceDate",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).InvoiceDueDate!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"InvoiceDueDate",V.Local.sRet)
+			
+			F.Intrinsic.String.Format(V.DataTable.AP043RIA(V.Local.iCount).Amount!FieldVal,"0.00",V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Amount",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).GLAccount!FieldVal," ",15,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"GLAccount",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).TaxableFlag!FieldVal," ",1,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"TaxableFlag",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).TaxCode!FieldVal," ",5,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"TaxCode",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).BookSelfAccessTax!FieldVal," ",1,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"BookSelfAccessTax",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).WorkOrder!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"WorkOrder",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).WorkSuff!FieldVal," ",3,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"WorkSuff",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).WorkSeq!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"WorkSeq",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Branch!FieldVal," ",2,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Branch",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).PurchaseOrder!FieldVal," ",7,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"PurchaseOrder",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).PurchaseOrderLine!FieldVal," ",3,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"PurchaseOrderLine",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).PurchaseUoM!FieldVal," ",3,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"PurchaseUoM",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).Receiver!FieldVal," ",6,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Receiver",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).InvoiceQuantity!FieldVal," ",14,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"InvoiceQuantity",V.Local.sRet)
+			
+			F.Intrinsic.String.LPad(V.DataTable.AP043RIA(V.Local.iCount).Price!FieldVal," ",14,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Price",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Buyer!FieldVal," ",3,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Buyer",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Voucher!FieldVal," ",7,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Voucher",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).VatTaxRule!FieldVal," ",2,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"VatTaxRule",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Part!FieldVal," ",38,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Part",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).Location!FieldVal," ",2,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"Location",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).CostType!FieldVal," ",2,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"CostType",V.Local.sRet)
+			
+			F.Intrinsic.String.RPad(V.DataTable.AP043RIA(V.Local.iCount).InvoiceNotes!FieldVal," ",300,V.Local.sRet)
+			F.Data.DataTable.SetValue("AP043RIA",V.Local.iCount,"InvoiceNotes",V.Local.sRet)
+		F.Intrinsic.Control.Next(V.Local.iCount)
+	
+		F.Data.DataView.Create("AP043RIA","AP043RIAView",22)
+		F.Data.DataView.ToString("AP043RIA","AP043RIAView","*!*",V.Ambient.NewLine,V.Local.sFileContents)
+		F.Data.DataView.Close("AP043RIA","AP043RIAView")
+	
+		F.Intrinsic.File.String2File(V.Local.sFilePath,V.Local.sFileContents)
+		F.Intrinsic.File.String2File(V.Local.sBackupFile,V.Local.sFileContents)
+		
+		F.Intrinsic.Control.SelectCase(V.Args.CallWrapperType)
+			F.Intrinsic.Control.Case(0)
+					f.Global.General.CallWrappersync(50,"AP043MNU")
+			F.Intrinsic.Control.Case(1)
+					f.Global.General.CallWrapperasync(50,"AP043MNU")
+		F.Intrinsic.Control.EndSelect
+
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.DataTable.DeleteRow("AP043RIA")
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(CatchErrorAP043RIA,"Sub",V.Ambient.CurrentSubroutine,"ErrNo",V.Ambient.ErrorNumber,"ErrDesc",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.AP043RIA.End
+
+Program.Sub.CatchErrorAP043RIA.Start
+F.Intrinsic.String.Build("{0}*!*{1}*!*{2}", V.Args.Sub, V.Args.ErrNo, V.Args.ErrDesc, V.Global.sAP043RIA)
+Program.Sub.CatchErrorAP043RIA.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$tmendes$}$20210817092041700$}$eiKQygbtM+i/BxpMxRAdSHWUX5iJCc/xFWXDz9LczwSm9zl7pwZeGiaajKkRNHq5p0GjzX36W9w=
+Program.Sub.Comments.End
