@@ -1,0 +1,78 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(DashForm)
+Gui.Form..Caption("AP Vendor Cross Reference")
+Gui.Form..Size(10425,5520)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..BarSaveButton(True,False)
+Gui.Form..Event(SaveButtonClick,Form_SaveButtonClick)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.gsgcVendors.Create(GsGridControl)
+Gui.Form.gsgcVendors.Enabled(True)
+Gui.Form.gsgcVendors.Visible(True)
+Gui.Form.gsgcVendors.Zorder(0)
+Gui.Form.gsgcVendors.Size(10425,4530)
+Gui.Form.gsgcVendors.Position(0,0)
+Gui.Form.gsgcVendors.Dock(5)
+Gui.Form.gsgcVendors.Event(LostFocus,gsgcVendors_LostFocus)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+	f.ODBC.Connection!con5564.opencompanyconnection(60)
+	f.Data.Datatable.CreateFromSQL("dtVend","con5564","SELECT VendorCode,VendorName,ID FROM GAB_5564_AP_XREF",true)
+	gui.Form.gsgcVendors.DataSource("dtVend")
+	gui.Form.gsgcVendors.AddGridviewFromDatatable("gvVend","dtVend")
+	gui.Form.gsgcVendors.SetGridviewProperty("gvVend","AllowAddRows",True)
+	gui.Form.gsgcVendors.SetGridviewProperty("gvVend","AllowDeleteRows",True)
+	gui.Form.gsgcVendors.SetColumnProperty("gvVend","VendorCode","ReadOnly","false")
+	gui.Form.gsgcVendors.SetColumnProperty("gvVend","VendorCode","AllowEdit","true")
+	gui.Form.gsgcVendors.SetColumnProperty("gvVend","VendorName","ReadOnly","false")
+	gui.Form.gsgcVendors.SetColumnProperty("gvVend","VendorName","AllowEdit","true")
+	
+	gui.Form..Show
+	
+F.Intrinsic.Control.Catch
+	f.ODBC.Connection!con5564.Close
+	f.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+
+Program.Sub.Main.End
+
+Program.Sub.Form_SaveButtonClick.Start
+f.Intrinsic.Control.Try
+	f.Data.DataTable.SaveToDB("dtVend","con5564","GAB_5564_AP_XREF","ID",7)
+	f.Intrinsic.UI.Msgbox("New XRef Saved.")
+f.Intrinsic.Control.Catch
+	F.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form_SaveButtonClick.End
+
+
+Program.Sub.Form_UnLoad.Start
+F.ODBC.Connection!CON5564.Close
+F.Intrinsic.Control.End
+Program.Sub.Form_UnLoad.End
+Program.Sub.gsgcVendors_LostFocus.Start
+'nothing
+Program.Sub.gsgcVendors_LostFocus.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$tmendes$}$20210615162035087$}$eiKQygbtM+i/BxpMxRAdSHWUX5iJCc/x3OM2VYtP3HGHlv91Mv8nps5qzlXrjOmy2otDIYWXeGo=
+Program.Sub.Comments.End
